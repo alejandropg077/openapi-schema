@@ -3,7 +3,7 @@ info:
   title: ChatGPT Lighthouse Integration API
   version: 1.0.0
 servers:
-  - url: http://localhost:3000
+  - url: https://fierce-gorge-10679-97744fab9304.herokuapp.com/
 paths:
   /chat:
     post:
