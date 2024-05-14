@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: ChatGPT Lighthouse Integration API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /chat:
+    post:
+      summary: Enviar URL para evaluación de Lighthouse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  example: "Dime cómo está el rendimiento del sitio https://example.com"
+      responses:
+        '200':
+          description: Resultado de la evaluación de Lighthouse
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chatResponse:
+                    type: string
+                  lighthouseData:
+                    type: object
+                    properties:
+                      lighthouseResult:
+                        type: object
+                        properties:
+                          categories:
+                            type: object
+                            properties:
+                              performance:
+                                type: object
+                                properties:
+                                  score:
+                                    type: number
+                              accessibility:
+                                type: object
+                                properties:
+                                  score:
+                                    type: number
+                              best-practices:
+                                type: object
+                                properties:
+                                  score:
+                                    type: number
+                              seo:
+                                type: object
+                                properties:
+                                  score:
+                                    type: number
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
